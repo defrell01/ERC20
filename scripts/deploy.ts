@@ -1,18 +1,16 @@
-import { ethers } from "hardhat";
+import { run, ethers } from "hardhat";
+import { IERC20__factory } from "../typechain-types";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  await run("compile");
+  const ERC20 = await ethers.getContractFactory("PXR3");
+  const contract = await ERC20.deploy("PXR3", "PXR", 18);
 
-  const lockedAmount = ethers.utils.parseEther("1");
+  await contract.deployed();
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  console.log(`Contract deployed \n
+  Contract address: ${contract.address}`)
 
-  await lock.deployed();
-
-  console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
