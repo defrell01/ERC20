@@ -8,7 +8,7 @@ async function main() {
 
   await contract.deployed();
 
-  console.log(`Contract deployed \n
+  console.log(`Contract for PXR3 token deployed \n
   Contract address: ${contract.address}`)
 
 }
