@@ -5,15 +5,15 @@ pragma solidity ^0.8.9;
 import "./IERC20.sol";
 
 contract PXR3 is IERC20 {
-    uint256 public _totalSupply; // total number of tokens
+    uint256 public _totalSupply; 
 
-    mapping(address => uint256) private _balances; // the number of tokens each user has
-    mapping(address => mapping(address => uint256)) private _allowances; // information who entrusted their money to whom
+    mapping(address => uint256) private _balances; 
+    mapping(address => mapping(address => uint256)) private _allowances; 
 
-    string public name; // name of token
-    string public symbol; // symbol of token
-    uint8 public decimals; // number of decimals
-    address owner; // address of owner
+    string public name; 
+    string public symbol; 
+    uint8 public decimals; 
+    address owner; 
 
     modifier ownerOnly() {
         require(msg.sender == owner, "Not an owner");
