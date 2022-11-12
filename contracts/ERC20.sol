@@ -46,7 +46,7 @@ contract PXR3 is IERC20 {
         owner = msg.sender;
     }
 
-    // getters
+  
     function totalSupply() public view virtual override returns (uint256) {
         return _totalSupply;
     }
@@ -61,7 +61,7 @@ contract PXR3 is IERC20 {
         return _balances[_owner];
     }
 
-    // transfers token to another user
+   
     function transfer(address _to, uint256 _value)
         public
         virtual
@@ -77,7 +77,7 @@ contract PXR3 is IERC20 {
         return true;
     }
 
-    // uses with function "approve", send tokens from another user to another user
+    
     function transferFrom(
         address _from,
         address _to,
@@ -99,7 +99,7 @@ contract PXR3 is IERC20 {
         return true;
     }
 
-    // approves someone to use your tokens
+    
     function approve(address _spender, uint256 _value)
         public
         virtual
@@ -113,7 +113,7 @@ contract PXR3 is IERC20 {
         return true;
     }
 
-    // also getter
+  
     function allowance(address _owner, address _spender)
         public
         view
@@ -124,7 +124,7 @@ contract PXR3 is IERC20 {
         return _allowances[_owner][_spender];
     }
 
-    // deletes tokens from system
+  
     function burn(address account, uint256 amount)
         public
         ownerOnly
@@ -136,7 +136,7 @@ contract PXR3 is IERC20 {
         emit Transfer(account, address(0), amount);
     }
 
-    // adds token to system
+   
     function mint(address account, uint256 amount) public ownerOnly {
         _totalSupply += amount;
         _balances[account] += amount;
